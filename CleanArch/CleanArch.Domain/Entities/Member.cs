@@ -23,10 +23,10 @@ namespace CleanArch.Domain.Entities
 
         private void ValidateDomain(string firstName, string lastName, string gender, string email, string isActive)
         {
-            DomainValidation.When((string.IsNullOrEmpty(firstName) || firstName.Length < 3), "Insert a valid name!");
-            DomainValidation.When(string.IsNullOrEmpty(firstName), "Insert a valid last name!");
-            DomainValidation.When(string.IsNullOrEmpty(gender), "Insert a valid gender!");
-            DomainValidation.When((string.IsNullOrEmpty(gender) || !gender.Contains('@')), "Insert a valid email!");
+            DomainValidation.When((string.IsNullOrEmpty(firstName) || firstName.Length < 3), "The first name cannot be null or empty");
+            DomainValidation.When(string.IsNullOrEmpty(lastName), "The last name cannot be null or empty!");
+            DomainValidation.When(string.IsNullOrEmpty(gender), "The gender cannot be null or empty!");
+            DomainValidation.When((string.IsNullOrEmpty(email) || !email.Contains('@')), "Insert a valid email!");
             DomainValidation.When(isActive is null, "Insert an activity!");
 
             FirstName = firstName;
