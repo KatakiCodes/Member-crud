@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace CleanArch.Domain.Entities
 {
-    public sealed class Member : Entity, IEquatable<Member>
+    public sealed class Member : Entity, IEquatable
     {
         public Member(string firstName, string lastName, EGender gender, string email, bool isActive)
         {
@@ -36,7 +36,7 @@ namespace CleanArch.Domain.Entities
             DomainValidation.When((firstName.Length < 3), "The first name must contain at the least 3 characters!");
             DomainValidation.When(string.IsNullOrEmpty(lastName), "The last name cannot be null or empty!");
             DomainValidation.When(!Enum.IsDefined(typeof(EGender),gender), "Insert a valid gender!");
-            DomainValidation.When(!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"), "Insert a valid email!");
+            DomainValidation.When(!Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"), "Insert a valid email!");
 
             FirstName = firstName;
             LastName = lastName;
