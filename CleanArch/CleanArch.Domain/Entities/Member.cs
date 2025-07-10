@@ -4,11 +4,11 @@ namespace CleanArch.Domain.Entities
 {
     public sealed class Member : Entity
     {
-        public Member(string firstName, string lastName, string gender, string email, string isActive)
+        public Member(string firstName, string lastName, string gender, string email, bool isActive)
         {
             ValidateDomain(firstName, lastName, gender,email,isActive);
         }
-        public Member(int id, string firstName, string lastName, string gender, string email, string isActive)
+        public Member(int id, string firstName, string lastName, string gender, string email, bool isActive)
         {
             DomainValidation.When(id < 0, "Invalid Id value");
             base.Id = id;
@@ -19,15 +19,14 @@ namespace CleanArch.Domain.Entities
         public string? LastName { get; private set; }
         public string? Gender { get; private set; }
         public string? Email { get; private set; }
-        public string? IsActive { get; private set; }
+        public bool IsActive { get; private set; }
 
-        private void ValidateDomain(string firstName, string lastName, string gender, string email, string isActive)
+        private void ValidateDomain(string firstName, string lastName, string gender, string email, bool isActive)
         {
             DomainValidation.When((string.IsNullOrEmpty(firstName) || firstName.Length < 3), "The first name cannot be null or empty");
             DomainValidation.When(string.IsNullOrEmpty(lastName), "The last name cannot be null or empty!");
             DomainValidation.When(string.IsNullOrEmpty(gender), "The gender cannot be null or empty!");
             DomainValidation.When((string.IsNullOrEmpty(email) || !email.Contains('@')), "Insert a valid email!");
-            DomainValidation.When(isActive is null, "Insert an activity!");
 
             FirstName = firstName;
             LastName = lastName;
