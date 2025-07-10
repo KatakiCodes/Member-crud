@@ -27,13 +27,13 @@ namespace CleanArch.Domain.Entities
         {
             if(other is null) 
                 return false;
-            return (other.Id == this.Id && other.FirstName.Equals(other.FirstName, StringComparison.OrdinalIgnoreCase));
+            return (other.Id == this.Id);
         }
 
         private void ValidateDomain(string firstName, string lastName, EGender gender, string email, bool isActive)
         {
-            DomainValidation.When(string.IsNullOrEmpty(firstName), "The first name cannot be null or empty");
-            DomainValidation.When((firstName.Length < 3), "The first name must contain at the least 3 characters");
+            DomainValidation.When(string.IsNullOrEmpty(firstName), "The first name cannot be null or empty!");
+            DomainValidation.When((firstName.Length < 3), "The first name must contain at the least 3 characters!");
             DomainValidation.When(string.IsNullOrEmpty(lastName), "The last name cannot be null or empty!");
             DomainValidation.When(string.IsNullOrEmpty(gender.ToString()), "The gender cannot be null or empty!");
             DomainValidation.When(!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"), "Insert a valid email!");
