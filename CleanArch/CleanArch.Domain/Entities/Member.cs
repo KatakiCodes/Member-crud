@@ -35,7 +35,7 @@ namespace CleanArch.Domain.Entities
             DomainValidation.When(string.IsNullOrEmpty(firstName), "The first name cannot be null or empty!");
             DomainValidation.When((firstName.Length < 3), "The first name must contain at the least 3 characters!");
             DomainValidation.When(string.IsNullOrEmpty(lastName), "The last name cannot be null or empty!");
-            DomainValidation.When(string.IsNullOrEmpty(gender.ToString()), "The gender cannot be null or empty!");
+            DomainValidation.When(!Enum.IsDefined(typeof(EGender),gender), "Insert a valid gender!");
             DomainValidation.When(!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"), "Insert a valid email!");
 
             FirstName = firstName;
