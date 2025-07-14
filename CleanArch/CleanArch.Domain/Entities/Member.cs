@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace CleanArch.Domain.Entities
 {
-    public sealed class Member : Entity, IEquatable
+    public sealed class Member : Entity, IEquatable<Member>
     {
         public Member(string firstName, string lastName, EGender gender, string email, bool isActive)
         {
