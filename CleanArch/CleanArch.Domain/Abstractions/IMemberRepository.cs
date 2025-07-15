@@ -8,6 +8,6 @@ namespace CleanArch.Domain.Abstractions
         public Task<Member> GetMemberById(int id);
         public Task<Member> CreateMember(Member member);
         public Task<Member> UpdateMember(Member member);
-        public Task DeleteMember(Member member);
+        public Task DeleteMember(int Id);
     }
 }
